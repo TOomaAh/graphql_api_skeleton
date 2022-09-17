@@ -42,6 +42,9 @@ Knex.js is a "batteries included" SQL query builder for Postgres, MSSQL, MySQL, 
 
 GraphQL is a query language for APIs and a runtime for fulfilling those queries with your existing data.
 
+### jsonwebtoken
+
+JSON Web Token (JWT) is a compact, URL-safe means of representing claims to be transferred between two parties. The claims in a JWT are encoded as a JSON object that is digitally signed using JSON Web Signature (JWS).
 
 
 
