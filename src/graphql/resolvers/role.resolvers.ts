@@ -9,6 +9,7 @@ const roleResolver = {
                 await db('Roles').insert({ name, is_admin });
                 console.log(await db('Roles').where({ name }).select('*'));
             } catch (e) {
+                if (e)
                 throw new Error(e);
             }
         }
