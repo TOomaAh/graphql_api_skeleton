@@ -13,6 +13,14 @@ const roleResolver = {
             } catch (e) {
                 throw new Error(DatabaseError[e.errno].message);
             }
+        },
+        role: async (_: any, args: any) => {
+            const { id } = args;
+            try {
+                return await db('roles').where('id', '=', id).first();
+            } catch (e) {
+                throw new Error(DatabaseError[e.errno].message);
+            }
         }
     },
     Mutation: {

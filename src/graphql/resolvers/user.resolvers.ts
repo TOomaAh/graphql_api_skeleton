@@ -23,6 +23,14 @@ const userResolver = {
             } catch (e) {
                 throw new Error(DatabaseError[e.errno].message);
             }
+        },
+        user: async (_: any, args: any) => {
+            const { id } = args;
+            try {
+                return await db('users').where('id', '=', id).first();
+            } catch (e) {
+                throw new Error(DatabaseError[e.errno].message);
+            }
         }
     },
     Mutation: {

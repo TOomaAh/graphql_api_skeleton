@@ -18,7 +18,10 @@ export const typeDefs = /* GraphQL */ `
     }
 
     type Query {
+        user(id: Int!): User
         users: [User]!
+
+        role(id: Int!): Role
         roles: [Role]!
     }
 
