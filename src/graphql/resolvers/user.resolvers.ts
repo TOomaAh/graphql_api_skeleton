@@ -40,7 +40,8 @@ const userResolver = {
                 return await db('users').insert({ email: email,
                     username: username,
                     password: await hashPassword(password),
-                    role: role
+                    role: role,
+                    created_at: new Date()
                 });
             } catch (e) {
                 throw new Error(DatabaseError[e.errno].message);
@@ -53,6 +54,20 @@ const userResolver = {
                 if (await comparePassword(password, user.password)) {
                     return await generate(user.id, user.username, user.role);
                 }
+            } catch (e) {
+                throw new Error(DatabaseError[e.errno].message);
+            }
+        },
+        updateUser: async (_: any, args) => {
+            const { id, email, username, password, role } = args;
+            try {
+                await db('users').where('id', '=', id).update({ email: email,
+                    username: username,
+                    password: await hashPassword(password),
+                    role: role,
+                    updated_at: new Date()
+                });
+                return await db('users').where('id', '=', id).first();
             } catch (e) {
                 throw new Error(DatabaseError[e.errno].message);
             }
