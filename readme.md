@@ -1,6 +1,6 @@
 # GraphQL api skeleton
 
-This project is a skeleton for a GraphQL api.
+This project is a skeleton for a GraphQL api with jwt authentication.
 
 ## Installation
 
