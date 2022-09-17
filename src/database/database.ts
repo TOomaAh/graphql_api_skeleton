@@ -12,9 +12,9 @@ const default_value = require('./default.database');
     for (let i = 0; i < default_value.default_value_role.length; i++) {
         const role = default_value.default_value_role[i];
         try {
-            const new_role = await db('roles').insert(role).returning('id');
+            const id = await db('roles').insert(role).returning('id');
             if (role) {
-                console.log(`Inserted role ${new_role.name} with id ${new_role.id}`);
+                console.log(`Inserted role ${role} with id ${id}`);
             }
         }catch (e) {
             console.log(`${role.name}:`, DatabaseError[e.errno].message);

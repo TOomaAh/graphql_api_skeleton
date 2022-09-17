@@ -26,7 +26,7 @@ export const typeDefs = /* GraphQL */ `
     }
 
     type Mutation {
-        signUp(email: String!, username: String!, password: String!, role: Int!): String!
+        signUp(email: String!, username: String!, password: String!, role: Int!): User!
         signIn(email: String!, password: String!): String!
 
         updateUser(id: Int!, email: String!, username: String!, password: String!, role: Int!): User!

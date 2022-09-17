@@ -37,12 +37,13 @@ const userResolver = {
         signUp: async (_: any, args) => {
             const { email, username, password, role } = args;
             try {
-                return await db('users').insert({ email: email,
+                const id = await db('users').insert({ email: email,
                     username: username,
                     password: await hashPassword(password),
                     role: role,
                     created_at: new Date()
                 });
+                return await db('users').where('id', '=', id).first();
             } catch (e) {
                 throw new Error(DatabaseError[e.errno].message);
             }
