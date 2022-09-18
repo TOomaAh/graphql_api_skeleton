@@ -51,11 +51,14 @@ const userResolver = {
         signIn: async (_: any, args) => {
             const { email, password } = args;
             try {
-                const user = await db('users').where('email', '=', email).andWhere('password', '=', password).first();
+                const user = await db('users').where('email', '=', email).first();
                 if (await comparePassword(password, user.password)) {
                     return await generate(user.id, user.username, user.role);
+                } else {
+                    return new Error('Invalid credentials');
                 }
             } catch (e) {
+                console.log(e);
                 throw new Error(DatabaseError[e.errno].message);
             }
         },
